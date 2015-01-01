@@ -1,0 +1,13 @@
+Non modificare il file di test msg.txt
+Alcune cose sono state scritte in hex editor per verificare l'allineamento a 16 byte.
+
+C'e`anche una riga molto lunga. E` normale.
+
+File:
+	msg.iv			Ultimo IV
+	msg.key			Ultima chiave.
+	msg.txt			Messaggio originale.
+	msg-enc.bin		Messaggio cifrato (Modo normale).
+	msg-dec.txt		Messaggio decifrato (Modo normale).
+	msg-enc-adv.bin		Messaggio cifrato (Modo avanzato).
+	msg-dec-adv.txt		Messaggio decifrato (Modo avanzato).

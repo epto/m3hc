@@ -1,0 +1,63 @@
+A@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Prova del algoritmo di cifratura M3HC
+mes3hacklab crypto.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Se leggi correttamente questo messaggio l'algoritmo e`
+stato implementato correttamente e le chiavi erano giuste.
+
+Disattivando la modalita`avanzata non sanranno incrementate
+le chiavi ad ogni blocco dati. Quindi dovresti poter vedere
+nel file crittato i primi 2 blocchi di dati lunghi 16 byte
+(le prime 2 righe del hex editor) che NON saranno identiche.
+Infatti nel primo blocco di 16 byte cambia un solo bit 
+rispetto al secondo blocco. Se non hai avuto sfiga con la
+chivave (cosa improbabile) la prima riga dovrebbe essere
+completamente diversa dalla seconda.
+
+Questo comportamento è dovuto alle sBox a 64 bit che sono
+condizionali al contenuto del payload. Modificando un bit
+del messaggio se ne cambiano altri 63 a caso (dalla chiave).
+
+I cambiamenti sono poi fatti anche dalle operazioni di 
+inversione delle sBox4 e sBox6 oltre che dalle rotazioni
+ed inversioni della meta` del blocco dati (8 byte).
+
+------------------------------------------------
+TEST:
+------------------------------------------------
+0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkl
+mnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWX
+YZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJ
+KLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345
+6789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqr
+stuvwxyz@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+????????????????????????????????????????????????
+------------------------------------------------
+
+N.B.:
+I caratteri iniziali A e @ non sono messi li a caso.
+Il file decrittado sara`paddato alla fine con degli spazi.
+
+##############################
+# Ecco il messaggio segreto: #
+# Delirio e fuffa.           #
+# Fuffirio deluffa.          #
+##############################
+
+Altri test per la parte crittata:
+#############ALLINEATO A 16B#!                "                $                (                @                A                D                H                                        
+#ALLINEATO 16B
+11111111111111
+22222222222222
+33333333333333
+44444444444444
+55555555555555
+66666666666666
+77777777777777
+88888888888888
+99999999999999
+----------------
+Scusate i caratteri strani. Ma servivano per i test!!!
+FINE###
+           

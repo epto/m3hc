@@ -1,0 +1,54 @@
+
+The M3HC block cipher (mes3hacklab block cipher).
+Version 1.00
+Copyright (C) 2014  by epto@mes3hacklab.org
+
+Key features:
+
+Key Size:	256 bits or 512 bits.
+IV Size:	128 bits.
+Block Size:	128 bits.
+
+8 x round sBox at 4 bits.
+2 x round sBox at 6 bits.
+64 sBox at 64 bits.
+8 rounds on 256 bits key, 16 rounds on 512 bits key.
+Shift register.
+Bytes shuffle.
+Bit rotations.
+Dynamics sBox.
+
+Modes availables:
+
+	I = Change IV.
+	K = Change KEY.
+	2 = 256 Bits KEY.
+	5 = 512 Bits KEY.
+	M = Multi Block mode: encrypt( byte[] ) / decrypt( byte[] )
+	O = Single block mode: encrypt( byte[], byte[]) / decrypt( byte[], byte[]) 
+
+	Normal		| - - 2 O
+	Normal		| - - 5 O
+	Normal		| - - 2 M
+	Normal		| - - 5 M
+	Advanced Mode	| K - 2 O
+	Advanced Mode	| K - 5 O
+	Advanced Mode	| K - 2 M
+	Advanced Mode	| K - 5 M
+	Advanced Mode	| K I 2 M
+	Advanced Mode	| K I 5 M
+
+
+M3HC is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This source code is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this source code; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
